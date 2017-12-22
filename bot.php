@@ -16,6 +16,9 @@ if (!is_null($events['events'])) {
 			if($text == 'Flow'){
 				$text = 'Flow is 100 m3/hr';
 			}
+			else if($text == 'Level 1'){
+				$text = 'Level is 95.555 M'
+			}
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
