@@ -14,10 +14,10 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$text = $event['message']['text'];
 			if($text == 'Flow'){
-				$text = 'Flow is 100 m3/hr';
+				$text = 'Flow is ' + mt_rand(96.88,120.11) + ' m3/hr';
 			}
 			if($text == 'Level'){
-				$text = 'Level is 95.555 M';
+				$text = 'Level is ' + mt_rand(700.44,800.99) + ' M';
 			}
 			
 			// Get replyToken
