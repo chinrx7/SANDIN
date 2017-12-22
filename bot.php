@@ -12,12 +12,21 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$text = $event['message']['text'];
+			/*$text = $event['message']['text'];
 			if($text == 'Flow'){
 				$text = 'Flow is 100 m3/hr';
 			}
 			if($text == 'Level'){
 				$text = 'Level is 95.55 M';
+			}*/
+			
+			switch($event['message']['text']){
+				case "Flow":
+				$text = "Flow is 100 m3/hr";
+				break;
+				case "Level":
+				$text = "Level is 95.55 M";
+				break;
 			}
 			
 			// Get replyToken
