@@ -22,13 +22,13 @@ if (!is_null($events['events'])) {
 			
 			switch($event['message']['text']){
 				case "Flow":
-				$text = "Flow is 100 m3/hr";
+				$text = "Current Flow is 100 m3/hr";
 				break;
 				case "Level":
-				$text = "Level is 95.55 M";
+				$text = "Current Level is 95.55 M";
 				break;
 				case "Sum":
-				$text = "Flow is 100 m3/hr \r\n Level is 95.55 M";
+				$text = "Current Flow is 100 m3/hr \r\n Current Level is 95.55 M";
 				break;
 				default:
 				$text = $event['message']['text'];
