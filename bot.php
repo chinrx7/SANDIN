@@ -27,6 +27,9 @@ if (!is_null($events['events'])) {
 				case "Level":
 				$text = "Level is 95.55 M";
 				break;
+				case "Sum":
+				$text = "Flow is 100 m3/hr /r/n Le is 95.55 M";
+				break;
 				default:
 				$text = $event['message']['text'];
 				break;
