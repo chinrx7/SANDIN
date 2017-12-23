@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 				$text = 'Level is 95.55 M';
 			}*/
 			
-			switch($event['message']['text']){
+			switch(trim($event['message']['text'])){
 				case "Flow":
 				$text = "Current Flow is 100 m3/hr";
 				break;
