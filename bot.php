@@ -28,7 +28,7 @@ if (!is_null($events['events'])) {
 				$text = "Current Level is 95.55 M";
 				break;
 				case "Sum":
-				$text = "Current Flow is 100 m3/hr \r\n Current Level is 95.55 M";
+				$text = "Current Flow is 100 m3/hr \r\nCurrent Level is 95.55 M";
 				break;
 				default:
 				$text = $event['message']['text'];
