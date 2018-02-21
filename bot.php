@@ -63,6 +63,15 @@ if (!is_null($events['events'])) {
 				case "FLOW":
 				$text = "FT0101 101 m3/hr \r\nFT0102 102 m3/hr \r\nFT0103 103 m3/hr";
 				break;
+				case "PRESSURE":
+				$text ="PT0001 10 bar \r\nPT0101 20 bar";
+				break;
+				case "LEVEL":
+				$text = "LT0001 10 M \r\nLT0501 11 M";
+				break;
+				case "PUMP":
+				$text ="M0001 RUN \r\nM0002 STOP \r\nM0003 RUN \r\nM0601 STOP \r\nM0602 START \r\nM0603 STOP";
+				break;
 				default:
 				$text = "Please enter a valid instrument name!!!!!";
 				break;
