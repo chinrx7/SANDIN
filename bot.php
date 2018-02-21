@@ -59,7 +59,10 @@ if (!is_null($events['events'])) {
 				break;
 				case "M0603":
 				$text = "M0603 STOP";
-				break;				
+				break;
+				case "FLOW":
+				$text = "FT0101 101 m3/hr /r/nFT0102 102 m3/hr /r/nFT0103 103 m3/hr";
+				break;
 				default:
 				$text = "Please enter a valid instrument name!!!!!";
 				break;
