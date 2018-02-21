@@ -73,7 +73,7 @@ if (!is_null($events['events'])) {
 				$text ="M0001 RUN \r\nM0002 STOP \r\nM0003 RUN \r\nM0601 STOP \r\nM0602 RUN \r\nM0603 STOP";
 				break;
 				case "SUM":
-				$text ="FT0101 101 m3/hr \r\nFT0102 102 m3/hr \r\nFT0103 103 m3/hr \r\nPT0001 10 bar \r\nPT0101 20 bar \r\nLT0001 10 M \r\nLT0501 11 M \r\nM0001 RUN \r\nM0002 STOP \r\nM0003 RUN \r\nM0601 STOP \r\nM0602 RUN \r\nM0603 STOP";
+				$text ="FT0101 1001 m3 \r\nFT0102 1002 m3 \r\nFT01003 103 m3";
 				break;
 				default:
 				$text = "Please enter a valid instrument name!!!!!";
