@@ -61,7 +61,7 @@ if (!is_null($events['events'])) {
 				$text = "M0603 STOP";
 				break;				
 				default:
-				$text = $event['message']['text'];
+				$text = strtoupper($event['message']['text']);
 				break;
 			}
 			
