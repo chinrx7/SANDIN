@@ -30,9 +30,6 @@ if (!is_null($events['events'])) {
 				case "FT0103":
 				$text = "FT0103 103 m3/hr";
 				break;
-				case "FLOW":
-				$text = "FT0101 101 m3/hr \r\nFT0102 102 m3/hr \r\nFT0103 103 m3/hr"
-				break;
 				case "PT0001":
 				$text = "PT0001 10 bar";
 				break;
