@@ -55,7 +55,7 @@ if (!is_null($events['events'])) {
 				$text = "M0601 STOP";
 				break;
 				case "M0602":
-				$text = "M0602 START";
+				$text = "M0602 RUN";
 				break;
 				case "M0603":
 				$text = "M0603 STOP";
@@ -70,7 +70,7 @@ if (!is_null($events['events'])) {
 				$text = "LT0001 10 M \r\nLT0501 11 M";
 				break;
 				case "PUMP":
-				$text ="M0001 RUN \r\nM0002 STOP \r\nM0003 RUN \r\nM0601 STOP \r\nM0602 START \r\nM0603 STOP";
+				$text ="M0001 RUN \r\nM0002 STOP \r\nM0003 RUN \r\nM0601 STOP \r\nM0602 RUN \r\nM0603 STOP";
 				break;
 				default:
 				$text = "Please enter a valid instrument name!!!!!";
