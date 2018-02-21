@@ -74,6 +74,7 @@ if (!is_null($events['events'])) {
 				break;
 				case "SUM":
 				$text ="หม้อสุกี้ไหมจ้ะ";
+				break;
 				default:
 				$text = "Please enter a valid instrument name!!!!!";
 				break;
