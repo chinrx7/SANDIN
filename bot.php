@@ -72,6 +72,8 @@ if (!is_null($events['events'])) {
 				case "PUMP":
 				$text ="M0001 RUN \r\nM0002 STOP \r\nM0003 RUN \r\nM0601 STOP \r\nM0602 RUN \r\nM0603 STOP";
 				break;
+				case "SUM":
+				$text ="หม้อสุกี้ไหมจ้ะ";
 				default:
 				$text = "Please enter a valid instrument name!!!!!";
 				break;
