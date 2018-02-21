@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 				$text = 'Level is 95.55 M';
 			}*/
 			
-			switch(trim($event['message']['text'])){
+			switch(strtoupper(trim($event['message']['text']))){
 				case "FT0101":
 				$text = "FT0101 101 m3/hr";
 				break;
