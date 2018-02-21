@@ -21,15 +21,45 @@ if (!is_null($events['events'])) {
 			}*/
 			
 			switch(trim($event['message']['text'])){
-				case "Flow":
-				$text = "Current Flow is 100 m3/hr";
+				case "FT0101":
+				$text = "FT0101 101 m3/hr";
 				break;
-				case "Level":
-				$text = "Current Level is 95.55 M";
+				case "FT0102":
+				$text = "FT0102 102 m3/hr";
 				break;
-				case "Sum":
-				$text = "Current Flow is 100 m3/hr \r\nCurrent Level is 95.55 M";
+				case "FT0103":
+				$text = "FT0103 103 m3/hr";
 				break;
+				case "PT0001":
+				$text = "PT0001 10 bar";
+				break;
+				case "PT0101":
+				$text = "PT0101 20 bar";
+				break;
+				case "LT0001":
+				$text = "LT0001 10 M";
+				break;
+				case "LT0501":
+				$text = "LT0501 11 M";
+				break;	
+				case "M0001":
+				$text = "M0001 RUN";
+				break;
+				case "M0002":
+				$text = "M0002 STOP";
+				break;
+				case "M0003":
+				$text = "M0003 RUN";
+				break;
+				case "M0601":
+				$text = "M0601 STOP";
+				break;
+				case "M0602":
+				$text = "M0602 START";
+				break;
+				case "M0603":
+				$text = "M0603 STOP";
+				break;				
 				default:
 				$text = $event['message']['text'];
 				break;
