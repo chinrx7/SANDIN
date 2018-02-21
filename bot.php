@@ -61,7 +61,7 @@ if (!is_null($events['events'])) {
 				$text = "M0603 STOP";
 				break;				
 				default:
-				$text = strtoupper($event['message']['text']);
+				$text = "Please enter a valid instrument name";
 				break;
 			}
 			
