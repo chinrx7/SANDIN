@@ -1,114 +1,59 @@
 <?php
-$access_token = 'BOsuZnsafYuDUA8daAe02Fm7M8vkUMmTiYSu1QANC0muItziiHClMeKsZWo3sl/6C46R4SFP+WJqdi3xCjT9uHISKOA4T0U60Hr3cov7AEglIhhxvKwS1QlrKCaiXm+BVIV3cI8n6HP6D1q2XqTlJgdB04t89/1O/w1cDnyilFU=';
 
-// Get POST body content
-$content = file_get_contents('php://input');
-// Parse JSON
-$events = json_decode($content, true);
-// Validate parsed JSON data
-if (!is_null($events['events'])) {
-	// Loop through each event
-	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			// Get text sent
-			/*$text = $event['message']['text'];
-			if($text == 'Flow'){
-				$text = 'Flow is 100 m3/hr';
-			}
-			if($text == 'Level'){
-				$text = 'Level is 95.55 M';
-			}*/
-			
-			switch(strtoupper(trim($event['message']['text']))){
-				case "FT0101":
-				$text = "FT0101 101 m3/hr";
-				break;
-				case "FT0102":
-				$text = "FT0102 102 m3/hr";
-				break;
-				case "FT0103":
-				$text = "FT0103 103 m3/hr";
-				break;
-				case "PT0001":
-				$text = "PT0001 10 bar";
-				break;
-				case "PT0101":
-				$text = "PT0101 20 bar";
-				break;
-				case "LT0001":
-				$text = "LT0001 10 M";
-				break;
-				case "LT0501":
-				$text = "LT0501 11 M";
-				break;	
-				case "M0001":
-				$text = "M0001 RUN";
-				break;
-				case "M0002":
-				$text = "M0002 STOP";
-				break;
-				case "M0003":
-				$text = "M0003 RUN";
-				break;
-				case "M0601":
-				$text = "M0601 STOP";
-				break;
-				case "M0602":
-				$text = "M0602 RUN";
-				break;
-				case "M0603":
-				$text = "M0603 STOP";
-				break;
-				case "FLOW":
-				$text = "FT0101 101 m3/hr \r\nFT0102 102 m3/hr \r\nFT0103 103 m3/hr";
-				break;
-				case "PRESSURE":
-				$text ="PT0001 10 bar \r\nPT0101 20 bar";
-				break;
-				case "LEVEL":
-				$text = "LT0001 10 M \r\nLT0501 11 M";
-				break;
-				case "PUMP":
-				$text ="M0001 RUN \r\nM0002 STOP \r\nM0003 RUN \r\nM0601 STOP \r\nM0602 RUN \r\nM0603 STOP";
-				break;
-				case "SUM":
-				$text ="FT0101 1001 m3 \r\nFT0102 1002 m3 \r\nFT0103 1003 m3";
-				break;
-				default:
-				$text = "Please enter a valid instrument name!!!!!";
-				break;
-			}
-			
-			// Get replyToken
-			$replyToken = $event['replyToken'];
+$API_URL = 'https://api.line.me/v2/bot/message/reply';
+$ACCESS_TOKEN = 'N32DTwVFgB637bifpKEPhHuMu7QRG+5d+45w1xAbwat9P4PtpkX41joeAYYd1SRaC46R4SFP+WJqdi3xCjT9uHISKOA4T0U60Hr3cov7AEhVbdbqIJ0HoFP1JW2qDJD+S6mmoGB/X8c3mK3FF0V2AAdB04t89/1O/w1cDnyilFU='; // Access Token ค่าที่เราสร้างขึ้น
+$POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' . $ACCESS_TOKEN);
 
-			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $text
-			];
+$request = file_get_contents('php://input');   // Get request content
+$request_array = json_decode($request, true);   // Decode JSON to Array
 
-			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
-			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
-			];
-			$post = json_encode($data);
-			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
+if ( sizeof($request_array['events']) > 0 )
+{
+ foreach ($request_array['events'] as $event)
+ {
+  $reply_message = '';
+  $reply_token = $event['replyToken'];
 
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-			$result = curl_exec($ch);
-			curl_close($ch);
+  if ( $event['type'] == 'message' ) 
+  {
+   if( $event['message']['type'] == 'text' )
+   {
+    $text = $event['message']['text'];
+	$myfile = fopen("line.txt", "w") or die("Unable to open file!");
+	$txt = $text;
+	fwrite($myfile, $txt);
+	fclose($myfile);
+    $reply_message = 'ระบบได้รับข้อความ ('.$text.') ของคุณแล้ว';
+   }
+   else
+    $reply_message = 'ระบบได้รับ '.ucfirst($event['message']['type']).' ของคุณแล้ว';
+  
+  }
+  else
+   $reply_message = 'ระบบได้รับ Event '.ucfirst($event['type']).' ของคุณแล้ว';
+ 
+  if( strlen($reply_message) > 0 )
+  {
+   //$reply_message = iconv("tis-620","utf-8",$reply_message);
+   $data = [
+    'replyToken' => $reply_token,
+    'messages' => [['type' => 'text', 'text' => $reply_message]]
+   ];
+   $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
-			echo $result . "\r\n";
-		}
-	}
+   //$send_result = send_reply_message($API_URL, $POST_HEADER, $post_body);
+   
+    $ch = curl_init($API_URL);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $POST_HEADER);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $post_body);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+	$result = curl_exec($ch);
+	curl_close($ch);
+ }
+}
 }
 echo "OK";
+
+?>
